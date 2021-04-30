@@ -1,0 +1,95 @@
+Test #,Test Type,Oracle,,
+Subtraction,,,,
+ASE1,Functional,X1[0] >= X2[0]                        ,=>,FG(  Y[t] == X1[0] - X2[0]  )
+ASE2,Functional,X2[0] >  X1[0]        ,=>,FG(  Y[t] == 0              )
+ASE3,Metamorphic,X1'[0] >  X1[0] >  X2[0],=>,FG( Y'[t] >  Y[t]           )
+ASE4,Metamorphic, X1[0] > X1'[0] >  X2[0]   ,=>,FG( Y'[t] <  Y[t]           )
+ASE5,Metamorphic, X1[0] > X2'[0] >  X2[0] ,=>,FG( Y'[t] <  Y[t]           )
+ASE6,Metamorphic, X1[0] >  X2[0] > X2'[0]       ,=>,FG( Y'[t] >  Y[t]           )
+ASE7,Metamorphic,(X1'[0] == X2[0]) & (X2'[0] == X1[0]),=>,FG( Y'[t] == 0 || Y[t] == 0 )
+ASE8,Internal,X2[0] >  X1[0]                 ,=>,FG( X2[t] == X2[0] - X1[0]  )
+ASE9,Internal,X2[0] >  X1[0]                     ,=>,FG( X1[t] == 0              )
+Hailstone 1,,,,
+ASE1,Functional,X1[0] % 2 == 0      ,=>,FG( Y[t] == X1[0] / 2     )
+ASE2,Functional,X1[0] % 2 == 1   ,=>,FG( Y[t] == 3 * X1[0] + 1 )
+ASE3,Functional,X1[0] == 0                                ,=>,FG( Y[t] == 0             )
+ASE4,Internal,X1[0] > 0,=>,FG( Po[t] + Pe[t] == 1    )
+M9,Internal,X1[0] > 0,=>,FG( H[t] = 0 || H[t] = 1 )
+M10,Internal,X1[0] > 0,=>,FG( M[t] = 0 )
+M11,Internal,X1[0] > 0,=>,FG( B[t] < 3 )
+M12,Internal,X1[0] > 0 & ( X1[0] % 2 == 0 ) ,=>,FG( A[t] > B[t] )
+M14,Internal,X1[0] > 0 & ( X1[0] % 2 == 1 ) ,=>,FG( A[t] = 0 || A[t] = 3 * X1[0] + 1 )
+M15,Metamorphic,( X1[0] % 2 == 0 )  &  ( X1'[0] = 2 * X1[0]     ) ,=>,FG( 2*Y1[t] = Y'[t])
+M16,Metamorphic,( X1[0] % 2 == 1 )  &  ( X1'[0] % 2 == 1 )  )  & X1(0) > X1'(0),=>,FG( Y[t] > Y'[t])
+ASE5,Metamorphic,( X1[0] % 2 == 0 )  &  ( X1'[0] = 2 * X1[0]     ) ,=>,FG( Y'[t] > Y[t]          )
+ASE6,Metamorphic,( X1[0] % 2 == 0 )  &  ( X1'[0] = 2 * X1[0] + 1 )  ,=>,FG( Y'[t] > Y[t]          )
+ASE7,Metamorphic,( X1[0] % 2 == 1 )  &  ( X1'[0] = 2 * X1[0] + 1 ) ,=>,FG( Y'[t] > Y[t]          )
+ASE8,Metamorphic,( X1[0] % 2 == 1 )  &  ( X1'[0] = 2 * X1[0]     ) ,=>,FG( Y'[t] < Y[t]          )
+Hailstone 2,,,,
+ASE1,Functional,X1[0] % 2 == 0      ,=>,FG( Y[t] == X1[0] / 2     )
+ASE2,Functional,X1[0] % 2 == 1   ,=>,FG( Y[t] == 3 * X1[0] + 1 )
+ASE3,Functional,X1[0] == 0                                ,=>,FG( Y[t] == 0             )
+ASE5,Metamorphic,( X1[0] % 2 == 0 )  &  ( X1'[0] = 2 * X1[0]     ) ,=>,FG( Y'[t] > Y[t]          )
+ASE6,Metamorphic,( X1[0] % 2 == 0 )  &  ( X1'[0] = 2 * X1[0] + 1 )  ,=>,FG( Y'[t] > Y[t]          )
+ASE7,Metamorphic,( X1[0] % 2 == 1 )  &  ( X1'[0] = 2 * X1[0] + 1 ) ,=>,FG( Y'[t] > Y[t]          )
+ASE8,Metamorphic,( X1[0] % 2 == 1 )  &  ( X1'[0] = 2 * X1[0]     ) ,=>,FG( Y'[t] < Y[t]          )
+ASE4,Internal,X1[0] > 0,=>,FG( Po[t] + Pe[t] == 1    )
+M9,Internal,X1[0] > 0,=>,FG( H[t] = 0 || H[t] = 1 )
+M10,Internal,X1[0] > 0,=>,FG( M[t] = 0 )
+M11,Internal,X1[0] > 0,=>,FG( B[t] < 3 )
+M12,Internal,X1[0] > 0 & ( X1[0] % 2 == 0 ) ,=>,FG( A[t] > B[t] )
+M14,Internal,X1[0] > 0 & ( X1[0] % 2 == 1 ) ,=>,FG( A[t] = 0 || A[t] = 3 * X1[0] + 1 )
+M15,Metamorphic,( X1[0] % 2 == 0 )  &  ( X1'[0] = 2 * X1[0]     ) ,=>,FG( 2*Y1[t] = Y'[t])
+M16,Metamorphic,( X1[0] % 2 == 1 )  &  ( X1'[0] % 2 == 1 )  )  & X1(0) > X1'(0),=>,FG( Y[t] > Y'[t])
+Approximate Majority,,,,
+ASE2,Functional, X1[0] >   X2[0]           =>,=>,FG( X1 WINS )
+ASE3,Functional, X1[0] <   X2[0]           =>,=>,FG( X2 WINS )
+ASE4,Internal,(NO CONSTRAINTS),=>,FG( U[t] == 0 )
+,,Where,,
+,,X1' WINS :=,,X1'[t] == X1'[0] + X2'[0] && X2'[t] == 0
+,,X2' WINS :=,,X2'[t] == X1'[0] + X2'[0] && X1'[t] == 0
+At Least 1,,,,
+M1,Functional,A1[0] > 0 & A2[0] > 0 & F1[0] > 0 & F2[0] > 0,=>,FG( Y[t] > 0 )
+M2,Functional,A1[0] == 0 & F1[0] > 0 & F2[0] > 0,=>,FG( Y == 0   )
+M3,Functional,A2[0] == 0 & F1[0] > 0 & F2[0] > 0,=>,FG( Y == 0   )
+M4,Internal,A1[0] > 0 & A2[0] > 0 & F1[0] <= A1[0] & F2[0] <= A2[0],=>,FG( F1 == 0 & F2 == 0 )
+M10,Internal,(NO CONSTRAINTS),=>,FP2[t] == 0 or  FP1[t] == 0 @ time t
+M11,Functional,F1 = 0 && F2 = 0,=>,Y[t] == 0
+M14,Metamorphic,"A1[0] = A1'[0], A2[0] = A2'[0], F1[0] < F1'[0], F1 > 0",=>,FG( Y'[t] == Y[t]  )
+M15,Metamorphic,"A1[0] = A1'[0], A2[0] = A2'[0], F1[0] > F1'[0], F1 > 0",=>,FG( Y'[t] == Y[t]  )
+M16,Metamorphic,"A1[0] = A1'[0], A2[0] = A2'[0], F2[0] < F2'[0], F1 > 0",=>,FG( Y'[t] == Y[t]  )
+M17,Metamorphic,"A1[0] = A1'[0], A2[0] = A2'[0], F2[0] > F2'[0], F1 > 0",=>,FG( Y'[t] == Y[t]  )
+M18,Metamorphic,"A1'[0] > A1[0], F1 > 0",=>,Y' >= Y
+M19,Metamorphic,"A1'[0] < A1[0], F1 > 0 A1[0] > 0",=>,Y' <= Y
+M20,Metamorphic,"A2'[0] > A2[0], F2 > 0",=>,Y' >= Y
+M21,Metamorphic,"A2'[0] < A2[0], F2 > 0, A2[0] > 0",=>,Y' <= Y
+Minimum,,,,
+M1,Functional,X[0] > y[0] =>,=>,Y[0] == Z[t]
+M2,Functional,X[0] < Y[0] =>,=>,X[0] == Z[t]
+M3,Functional,X == 0 || Y == 0,=>,Z[t] = 0
+M4,Internal,X > Y,=>,Y[t] == 0
+M5,Internal,X > Y,=>,X[t] == X[0]-Y[0]
+M6,Internal,X > Y,=>,X[t] + Z[t] = X[0]+ Y[0]
+M7,Internal,X < Y,=>,X[t] == 0
+M8,Internal,X < Y,=>,Y[t] == Y[0]-X[0]
+M9,Internal,X < Y,=>,Y[t] + Z[t] = X[0]+ Y[0]
+M10,Metamorphic,X[0] > y[0] && X[0]' > Y[0] =>,=>,Z'[t] = Z[t]
+M11,Metamorphic,Y'[0] = X[0] && X'[0] = Y[0] =>,=>,Z'[t] == Z[t]
+M12,Metamorphic,Y[0] > X[0] && Y[0]' > X[0] =>,=>,Z'[t] = Z[t]
+Maximun,,,,
+M1,Functional,X[0] > y[0] =>,=>,X[0] == Z[t]
+M2,Functional,X[0] < Y[0] =>,=>,Y[0] == Z[t]
+M4,Functional,X == 0,=>,Z[t] = y[0]
+M5,Functional,Y == 0 ,=>,Z[t] = X[0]
+M6,Internal,No contraints,=>,Y[t] == 0 && X[t] == 0
+M7,Internal,X > Y,=>,YP[t] = 0
+M8,Internal,X < Y,=>,XP[t] = 0
+M9,Metamorphic,Y'[0] = X[0] && X'[0] = Y[0] =>,=>,Z'[t] == Z[t]
+M10,Metamorphic,X[0] > y[0] && X[0]' > Y[0] =>,=>,Z'[t] > Z[t]
+M11,Metamorphic,Y[0] > X[0] && Y[0]' > X[0] =>,=>,Z'[t] > Z[t]
+XY mod 3,,,,
+M1,Internal,X[0] == Y[0] mod 3,=>,X[t] == 0 && Y[t] == 0
+M2,Functional,X[0] == Y[0] mod 3,=>,V[t] > 0
+M3,Internal,X[0] != y[0] mod 3,=>,X[t] > 0 || Y[t] > 0
+M4,Functional,X[0] != y[0] mod 3,=>,V[t] == 0
+M5,Functional,X[0] mod3  == Y[0] mod 3 ,=>,V[t] > 0

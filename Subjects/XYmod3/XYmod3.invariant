@@ -1,0 +1,8 @@
+Flows (== constant):
+
+Inequalities (remove reactions, <= constant):
+	+3 Reaction1 +3 Reaction4 +3 Reaction5 +2 X +3 V +1 Y 
+	+3 Reaction2 +3 Reaction4 +3 Reaction5 +1 X +3 V +2 Y 
+
+Useless:
+	+1 Reaction3 -3 Reaction4 -3 Reaction5 -1 X -3 V -1 Y 
